@@ -1,4 +1,4 @@
-package tobyspring.springreview;
+package tobyspring.springreview.exrate;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 

@@ -2,6 +2,8 @@ package tobyspring.springreview;
 
 import org.springframework.beans.factory.BeanFactory;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+import tobyspring.springreview.payment.Payment;
+import tobyspring.springreview.payment.PaymentService;
 
 import java.io.IOException;
 import java.math.BigDecimal;

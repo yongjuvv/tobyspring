@@ -1,11 +1,11 @@
-package tobyspring.springreview;
+package tobyspring.springreview.exrate;
 
-import org.springframework.stereotype.Component;
+import tobyspring.springreview.payment.ExRateProvider;
 
 import java.io.IOException;
 import java.math.BigDecimal;
 
-public class SimpleExRateProvider implements ExRateProvider{
+public class SimpleExRateProvider implements ExRateProvider {
 
     @Override
     public BigDecimal getExRate(String currency) throws IOException {

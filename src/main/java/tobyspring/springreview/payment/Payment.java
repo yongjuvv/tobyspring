@@ -1,7 +1,6 @@
-package tobyspring.springreview;
+package tobyspring.springreview.payment;
 
 import java.math.BigDecimal;
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 public class Payment {

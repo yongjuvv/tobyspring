@@ -1,8 +1,11 @@
 package tobyspring.springreview;
 
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import tobyspring.springreview.exrate.CachedExRateProvider;
+import tobyspring.springreview.payment.ExRateProvider;
+import tobyspring.springreview.exrate.WebApiExRateProvider;
+import tobyspring.springreview.payment.PaymentService;
 
 @Configuration
 //@ComponentScan
