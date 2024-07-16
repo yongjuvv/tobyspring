@@ -5,7 +5,7 @@ import java.math.BigDecimal;
 
 public class Client {
     public static void main(String[] args) throws IOException {
-        PaymentService paymentService = new SimpleExRatePaymentService();
+        PaymentService paymentService = new PaymentService();
         Payment payment = paymentService.prepare(1L, "USD", BigDecimal.valueOf(59.6));
         System.out.println("payment = " + payment);
     }
