@@ -1,11 +1,5 @@
 package tobyspring.springreview.payment;
 
-import org.junit.jupiter.api.extension.ExtendWith;
-import org.springframework.stereotype.Component;
-import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.junit.jupiter.SpringExtension;
-import tobyspring.springreview.TestObjectFactory;
-
 import java.io.IOException;
 import java.math.BigDecimal;
 

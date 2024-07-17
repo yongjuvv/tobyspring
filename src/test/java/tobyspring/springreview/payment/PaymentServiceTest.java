@@ -1,23 +1,27 @@
 package tobyspring.springreview.payment;
 
 import org.assertj.core.api.Assertions;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
-import tobyspring.springreview.TestObjectFactory;
-import tobyspring.springreview.exrate.WebApiExRateProvider;
+import tobyspring.springreview.TestPaymentConfig;
 
 import java.io.IOException;
 import java.math.BigDecimal;
+import java.time.Clock;
+import java.time.Instant;
 import java.time.LocalDateTime;
+import java.time.ZoneId;
 
-import static org.junit.jupiter.api.Assertions.*;
-
-@ContextConfiguration(classes = TestObjectFactory.class)
+@ContextConfiguration(classes = TestPaymentConfig.class)
 @ExtendWith(SpringExtension.class)
 class PaymentServiceTest {
+
+    @Autowired
+    Clock clock;
 
     @Autowired
     PaymentService paymentService;
@@ -60,5 +64,16 @@ class PaymentServiceTest {
         //then
         Assertions.assertThat(payment2.getConvertedAmount()).isEqualByComparingTo(BigDecimal.valueOf(500).multiply(BigDecimal.TEN));
 
+    }
+
+    @Test
+    void validUntilTest() throws IOException {
+        //given
+        Payment payment = paymentService.prepare(1L, "USD", BigDecimal.TEN);
+        //when
+        LocalDateTime now = LocalDateTime.now(clock);
+        LocalDateTime expectedUntil = now.plusMinutes(30);
+        //then
+        Assertions.assertThat(payment.getValidUntil()).isEqualTo(expectedUntil);
     }
 }
