@@ -2,10 +2,12 @@ package tobyspring.springreview;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.web.client.RestTemplate;
 import tobyspring.springreview.api.ApiTemplate;
 import tobyspring.springreview.api.SimpleApiExecutor;
 import tobyspring.springreview.api.SimpleExRateExtractor;
 import tobyspring.springreview.exrate.CachedExRateProvider;
+import tobyspring.springreview.exrate.RestTemplateExRateProvider;
 import tobyspring.springreview.payment.ExRateProvider;
 import tobyspring.springreview.exrate.WebApiExRateProvider;
 import tobyspring.springreview.payment.PaymentService;
@@ -28,12 +30,17 @@ public class PaymentConfig {
 
     @Bean
     public ExRateProvider exRateProvider() {
-        return new WebApiExRateProvider(apiTemplate());
+        return new RestTemplateExRateProvider(restTemplate());
     }
 
     @Bean
     public ApiTemplate apiTemplate() {
-        return new ApiTemplate(new SimpleApiExecutor(), new SimpleExRateExtractor());
+        return new ApiTemplate();
+    }
+
+    @Bean
+    public RestTemplate restTemplate() {
+        return new RestTemplate();
     }
 
     @Bean
