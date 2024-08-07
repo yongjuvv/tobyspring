@@ -30,7 +30,7 @@ class PaymentServiceTest {
     ExRateProviderStub exRateProviderStub;
 
     @Test
-    void prepareWithStub() throws IOException {
+    void prepareWithStub()  {
         //given
         BigDecimal testExRate = BigDecimal.valueOf(1_000);
 
@@ -46,7 +46,7 @@ class PaymentServiceTest {
     }
 
     @Test
-    void convertedAmountTest() throws IOException {
+    void convertedAmountTest()  {
         //1. exRate : 1000
 
         //given
@@ -67,7 +67,7 @@ class PaymentServiceTest {
     }
 
     @Test
-    void validUntilTest() throws IOException {
+    void validUntilTest()  {
         //given
         Payment payment = paymentService.prepare(1L, "USD", BigDecimal.TEN);
         //when
